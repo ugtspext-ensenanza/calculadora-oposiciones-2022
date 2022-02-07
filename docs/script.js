@@ -72,14 +72,14 @@ $(document).ready(function($) {
   
   function compruebaMaxSeccion1(objeto) {
   	$numseccion = objeto.name.substring(4, 7);
-    $mensaje = "ATENCIÓN: En el apartado de Experiencia docente previa se tendrá en cuenta un máximo de 10 años, cada uno de los cuales deberá ser valorado en uno solo de los subapartados.";
+    $mensaje = "ATENCIÓN: En el apartado de Experiencia docente previa se tendrá en cuenta un máximo de cinco años, cada uno de los cuales deberá ser valorado en uno solo de los subapartados.";
     
-    if (parseInt($("input[name=data" + $numseccion + "x]").val()) > 10) {
-    	$("input[name=data" + $numseccion + "x]").val("10");
+    if (parseInt($("input[name=data" + $numseccion + "x]").val()) > 5) {
+    	$("input[name=data" + $numseccion + "x]").val("5");
       alert($mensaje);
     }
     
-    if (parseInt($("input[name=data" + $numseccion + "x]").val()) == 10 && parseInt($("input[name=data" + $numseccion + "y]").val()) > 0) {
+    if (parseInt($("input[name=data" + $numseccion + "x]").val()) == 5 && parseInt($("input[name=data" + $numseccion + "y]").val()) > 0) {
     	$("input[name=data" + $numseccion + "y]").val("0");
       alert($mensaje);
     }
@@ -88,7 +88,7 @@ $(document).ready(function($) {
     $totalMeses = parseInt($("input[name=data110y]").val()) + parseInt($("input[name=data120y]").val()) + parseInt($("input[name=data130y]").val()) + parseInt($("input[name=data140y]").val());
     
     $totalAnos = $totalAnos + ($totalMeses/12);
-    if ($totalAnos > 10) {
+    if ($totalAnos > 5) {
     	$("input[name=data" + $numseccion + "x]").val("0");
       $("input[name=data" + $numseccion + "y]").val("0");
       alert($mensaje);
@@ -148,19 +148,19 @@ $(document).ready(function($) {
 
 		switch ($numseccion) {
 			case "110":
-				$result = 0.7 * $ano + 0.058 * $mes;
+				$result = 1 * ($ano + ($mes/12));
 				break;
 
 			case "120":
-				$result = 0.35 * $ano + 0.029 * $mes;
+				$result = 0.5 * ($ano + ($mes/12));
 				break;
 
 			case "130":
-				$result = 0.15 * $ano + 0.012 * $mes;
+				$result = 0.5 * ($ano + ($mes/12));
 				break;
                 
             case "140":
-				$result = 0.1 * $ano + 0.008 * $mes;
+				$result = 0.25 * ($ano + ($mes/12));
 				break;
                 
 			case "210":
@@ -249,7 +249,7 @@ $(document).ready(function($) {
 
 	/* CALCULA TOTALES */
 	function actualizatotal() {
-		var valormaximo = [0, 7, 5, 2];
+		var valormaximo = [0, 5, 5, 2];
 		var sumatotal = 0;
 
 		for (var sec = 1; sec <= 6; sec++) {
