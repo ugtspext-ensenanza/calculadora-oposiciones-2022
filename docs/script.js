@@ -148,19 +148,19 @@ $(document).ready(function($) {
 
 		switch ($numseccion) {
 			case "110":
-				$result = 1 * ($ano + ($mes/12));
+				$result = (1 * $ano) + (0.083 * $mes);
 				break;
 
 			case "120":
-				$result = 0.5 * ($ano + ($mes/12));
+				$result = (0.5 * $ano) + (0.041 * $mes);
 				break;
 
 			case "130":
-				$result = 0.5 * ($ano + ($mes/12));
+				$result = (0.5 * $ano) + (0.041 * $mes);
 				break;
                 
             case "140":
-				$result = 0.25 * ($ano + ($mes/12));
+				$result =  (0.25 * $ano) + (0.020 * $mes);
 				break;
                 
 			case "210":
